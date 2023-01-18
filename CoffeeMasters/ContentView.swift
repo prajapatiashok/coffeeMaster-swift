@@ -9,19 +9,38 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Text("Hello, world banger!")
-                .padding()
-            Button("Clicke me") {
-                print("hey you just clicked me")
-            }
+        TabView {
+            MenuPage()
+                .tabItem{
+                    Image(systemName: "cup.and.saucer")
+                    Text("Menu")
+                }
+            OffersPage()
+                .tabItem{
+                    Image(systemName: "tag")
+                    Text("Offers")
+                }
+           OrdersPage()
+                .tabItem{
+                    Image(systemName: "cart")
+                    Text("Orders")
+                }
+            InfoPage()
+                .tabItem{
+                    Image(systemName: "info.circle")
+                    Text("Info")
+                }
 
         }
+       
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+                .previewDevice("iPhone 13 Pro")
+        }
     }
 }
