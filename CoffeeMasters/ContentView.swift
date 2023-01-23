@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var cartManager: CartManager
     var body: some View {
         TabView {
             MenuPage()
@@ -25,6 +26,7 @@ struct ContentView: View {
                     Image(systemName: "cart")
                     Text("Orders")
                 }
+                .badge(cartManager.cart.count)
             InfoPage()
                 .tabItem{
                     Image(systemName: "info.circle")
@@ -41,6 +43,7 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView()
                 .previewDevice("iPhone 13 Pro")
+                .environmentObject(CartManager())
         }
     }
 }
